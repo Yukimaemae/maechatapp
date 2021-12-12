@@ -1,0 +1,114 @@
+<html lang="ja">
+<head>
+    <meta charset="utf8" />
+    <!-- cssライブラリの読み込み -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+    <!-- 自分で書いたcssの読み込み -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div>
+<img src="./img/gorilla.jpg" alt="ゴリラ">
+</div>
+
+<button id="openModal">Chat with ゴリラ</button>
+
+<!-- モーダルエリアここから -->
+<section id="modalArea" class="modalArea">
+  <div id="modalBg" class="modalBg"></div>
+  <div class="modalWrapper">
+    <div class="modalContents">
+                    <div id='app'>
+
+                        <!-- ▼画面上部の緑の部分 -->
+                        <header>
+                            <h1 class="title is-5">AnywayChat</h1>
+                            <p class="chaturl subtitle"><a v-bind:href="developerSite" target="_blank">created by maemae</a></p>
+                        </header>
+                        <!-- ▲画面上部の緑の部分 -->
+
+                        <div id="message-contents">
+                            <!-- ▼メッセージ一個ぶんの表示 -->
+                            <div v-for="message in messageList" class="message-wrapper is-clearfix">
+                                <div class="box" v-bind:class="{'mymessage' : isMyMessage(message) }">
+                                    <div class="content">
+                                        <p>
+                                        <strong>{{message.userName}}</strong> <small>{{displayTime(message)}}</small>
+                                        <br />
+                                        {{message.message}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ▲メッセージ一個ぶんの表示 -->
+                        </div>
+
+                        <!-- ▼メッセージ入力部分 -->
+                        <footer>
+                            <div class="field is-grouped">
+                                <div class="control is-expanded">
+                                    <input v-model="message" v-on:keydown.enter="send" class="input is-medium" type="text" placeholder="Message" />
+                                </div>
+                                <div class="control control-submit">
+                                    <button v-bind:disabled="message.length==0" v-on:click="send" class="button is-primary button-submit">送信</button>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- ▲メッセージ入力部分 -->
+                    </div>
+
+                    <!-- javascriptライブラリの読み込み -->
+                    <script src="https://unpkg.com/vue"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script> 
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-app.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-database.js"></script>
+
+                    <!-- 自分で書いたjavascriptの読み込み -->
+                    <script type='text/babel' src="script.js"></script>
+
+</div>
+<div id="closeModal" class="closeModal">
+  ×
+</div>
+</div>
+</section>
+<!-- モーダルエリアここまで -->
+
+<!-- ↓body閉じタグ直前でjQueryを読み込む -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
